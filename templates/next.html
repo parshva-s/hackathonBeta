@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title id="emulatorResult">Future Emulator Results</title>
+  </head>
+  <body>
+    <div id="divHeading">
+      <h1 id="heading">Your Future Emulator</h1>
+    </div>
+    <div id="introMessage">
+      <h3 id="introHeading" style="text-decoration: underline">
+        Your Future Emulator Results
+      </h3>
+      <p>
+        Using the job bank database, we were able to determine the annual
+        earnings of the profession you chose. Here are the results:
+      </p>
+    </div>
+    <div id="results">
+      <h2>Your Resulting Annual Salary:</h2>
+      <p id="low">/p></p>
+      <p id="mid"></p>
+      <p id="high"></p>
+
+      <h2 id="taxHeading"></h2>
+      <p id="taxes"></p>
+      <p id="afterTax"></p>
+    </div>
+
+    <script>
+      var counts = JSON.parse("{{ salary }}");
+      let arr = counts.toString();
+      let salArr = arr.split(",");
+      for (i = 0; i < 3; i++) {
+        if (salArr[i] == "0") {
+          document.getElementById("low").innerHTML =
+            "There is not enough data to present accurate information.";
+        } else {
+          document.getElementById("low").innerHTML =
+            "The minimum annual salary is: $" + salArr[0];
+          document.getElementById("mid").innerHTML =
+            "The median annual salary is: $" + salArr[1];
+          document.getElementById("high").innerHTML =
+            "The maximum annual salary is: $" + salArr[2];
+
+          document.getElementById("taxHeading").innerHTML =
+            "Your Median Salary After Federal Taxes:";
+          document.getElementById("taxes").innerHTML =
+            "You'd have to give $" + tax(salArr[1]) + " to federal taxes.";
+          document.getElementById("afterTax").innerHTML =
+            "You'd have $" +
+            (parseInt(salArr[1]) - parseInt(tax(salArr[1]))) +
+            " remaining after federal taxes.";
+        }
+      }
+
+      function tax(sal) {
+        if (sal < 49020) {
+          var tax_amount = sal * 0.15;
+          return tax_amount;
+        } else if (49020 < sal < 98040) {
+          var tax_amount = 49020 * 0.15 + (sal - 49020) * 0.205;
+          return tax_amount;
+        } else if (98040 < sal < 151978) {
+          var tax_amount = 49020 * 0.15 + 49020 * 0.205 + (sal - 98040) * 0.26;
+          return tax_amount;
+        } else if (151978 < sal < 216511) {
+          var tax_amount =
+            49020 * 0.15 + 49020 * 0.205 + 53939 * 0.26 + (sal - 151978) * 0.29;
+          return tax_amount;
+        } else if (sal > 216511) {
+          var tax_amount =
+            49020 * 0.15 +
+            49020 * 0.205 +
+            53939 * 0.26 +
+            64533 * 0.29 +
+            (sal - 216511) * 0.33;
+          return tax_amount;
+        }
+      }
+    </script>
+  </body>
+</html>

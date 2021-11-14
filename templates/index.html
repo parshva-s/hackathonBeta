@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">        
+        <title id="titleMain">Future Emulator</title>
+    </head>
+    <body>
+        <div id="divHeading">
+            <h1 id="heading">Your Future Emulator</h1>
+          </div>
+          <div id="introMessage">
+            <h3 id="introHeading" style="text-decoration: underline">
+              Welcome to the Future Emulator!
+            </h3>
+            <p>The Future Emulator is a web program that allows you to find the low, median, and high salaries for your desired professin in a certain province. 
+                We used job bank to get the salaries for the 20 most common jobs in the market. Our program will also determinehow much federal taxes you will 
+                have to pay based on your median salary.</p>
+          </div>
+          <div id="divButton">
+            <button id="readyButton" onclick="start()">Start the Quiz!</button>
+            <script>
+                function start() {
+                    document.getElementById("divInputs").style.visibility = "visible";
+                }
+            </script>
+            <div id="divInputs">
+        <form action = "/" method="POST">
+                <label for = "Job">Enter your desired job:</label>
+                <input list = "jobs" type = "text" name = "job">
+                <datalist id="jobs">
+                    <option value="Mechanical Engineer"></option>
+                    <option value="Civil Engineer"></option>
+                    <option value="Electrical Engineer"></option>
+                    <option value="Family Physician"></option>
+                    <option value="Computer Engineer"></option>
+                    <option value="Specialist Physician"></option>
+                    <option value="Software Engineer"></option>
+                    <option value="Pharmacist"></option>
+                    <option value="Architect"></option>
+                    <option value="Chef"></option>
+                    <option value="Financial Analyst"></option>
+                    <option value="Highschool Teacher"></option>
+                    <option value="Elementary Teacher"></option>
+                    <option value="Professor"></option>
+                    <option value="Plumber"></option>
+                    <option value="Welder"></option>
+                    <option value="Hairstylist"></option>
+                    <option value="Lawyer"></option>
+                    <option value="Accountant"></option>
+
+                  </datalist>
+                  <!-- <br> -->
+                <label for = "Province">Enter your desired province:</label>
+                <input list="provinces" type = "text" name = "province">  
+                <datalist id="provinces">
+                    <option value="Alberta"></option>
+                    <option value="British Columbia"></option>
+                    <option value="Ontario"></option>
+                    <option value="Quebec"></option>
+                    <option value="Newfoundland and Labrador"></option>
+                    <option value="Manitoba"></option>
+                    <option value="Saskatchewan"></option>
+                    <option value="Prince Edward Island"></option>
+                    <option value="New Brunswick"></option>
+                    <option value="Nova Scotia"></option>
+                </datalist> 
+                <br>
+            <input id="submitButton" type ="submit" value="Click for Results">
+        </form>
+    </div>
+    </body>
+</html>
