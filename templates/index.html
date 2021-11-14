@@ -3,19 +3,20 @@
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
         <link rel="preconnect" href="https://fonts.googleapis.com">        
-        <title id="titleMain">Future Emulator</title>
+        <title id="titleMain">Future Financial Earnings</title>
     </head>
     <body>
         <div id="divHeading">
-            <h1 id="heading">Your Future Emulator</h1>
+            <h1 id="heading">Your Future Financial Earnings</h1>
           </div>
           <div id="introMessage">
             <h3 id="introHeading" style="text-decoration: underline">
-              Welcome to the Future Emulator!
+              Welcome to Your Future Financial Earnings!
             </h3>
-            <p>The Future Emulator is a web program that allows you to find the low, median, and high salaries for your desired professin in a certain province. 
+            <p>The Future Financial Earnings is a web program that allows you to find the low, median, and high salaries for your desired professin in a certain province. 
                 We used job bank to get the salaries for the 20 most common jobs in the market. Our program will also determinehow much federal taxes you will 
-                have to pay based on your median salary.</p>
+                have to pay based on your median salary. This program is meant for you to determine how much money you will have to spend and the lifestyle that 
+                you can live based on your predicted salary.</p>
           </div>
           <div id="divButton">
             <button id="readyButton" onclick="start()">Start the Quiz!</button>
@@ -51,7 +52,7 @@
 
                   </datalist>
                   <!-- <br> -->
-                <label for = "Province">Enter your desired province:</label>
+                <label id="prov" for = "Province">Enter your desired province:</label>
                 <input list="provinces" type = "text" name = "province">  
                 <datalist id="provinces">
                     <option value="Alberta"></option>

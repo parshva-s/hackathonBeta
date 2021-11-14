@@ -42,9 +42,13 @@ h3 {
     border: 0.5px solid;
     height: 40px;
     border-radius: 5px;
-    margin-left: 24%;
+    margin-left: 27%;
     margin-bottom: 2%;
     margin-top: 2%;   
+}
+
+#prov {
+    padding-left: 5%;
 }
 
 #divInputs {

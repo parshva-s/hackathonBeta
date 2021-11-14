@@ -51,6 +51,9 @@ def salary(job,provinceincanada):
         if salary.find('.'):
             hourlywage=True
             salary=salary.strip()
+        if salary.find(","):
+            salary=salary.replace(',','')
+            salary=salary.strip()
         actualwage.append(salary)
     actual_wages=[actualwage[i:i+3] for i in range(0, len(actualwage), 3)]
     newdict=dict(zip(officialprovinces,actual_wages))
@@ -67,6 +70,8 @@ def salary(job,provinceincanada):
         sal = float(sal)
         if sal < 1000:
             sal=int(sal*40*50)
+            annualSalaryList.append(sal)
+        else:
             annualSalaryList.append(sal)
     return(annualSalaryList)
 
